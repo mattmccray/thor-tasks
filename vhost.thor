@@ -12,12 +12,17 @@ class Vhost < Thor
       url
     end
     unless url.empty?
-      puts "Creating #{url} at #{filepath}"
+      puts "Creating #{url} at #{fullpath}"
       puts " - Updating /etc/hosts"
       entry = "\n127.0.0.1       #{url}\n"
       #run "(echo '#{entry}' >> /etc/hosts)", :with=>'sudo'
       File.open '/etc/hosts', 'a' do |hosts|
         hosts << entry
+      end rescue begin
+        puts "You don't have permission to update /etc/hosts"
+        puts "Re-run with sudo."
+        puts "Done."
+        exit 1
       end
       
       puts " - Updating /etc/apache2/extra/httpd-vhosts.conf"

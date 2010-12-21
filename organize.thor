@@ -7,36 +7,34 @@
 #  thor organize:files ~/Downloads
 #
 
-EXTENSIONS_FOR_TYPE = {
-  "Applications" => %w(.app .jar .exe .pkg .mpkg .air),
-  "Archives"    => %w(.dmg .zip .rar .sit .sitx .tar .gz .bz2),
-  "Audio"       => %w(.wav .mp3 .ogg .m3u .m4a .wma),
-  "Code"        => %w(.sh .rb .js .java .c .m .h .py .php .css .haml .sass .erb .html .rhtml .xhtml .htm  .bat .patch .diff .gem .xul .shy .sql .nib .xib .cib .j .sj .nu .rake .thor .nuke .mxml),
-  "Comics"      => %w(.cbr .cbz),
-  "Data"        => %w(.xml .yaml .yml .json .sqlite .sqlite3 .db .csv .opml),
-  "Documents"   => %w(.pdf .doc .ppt .txt .text .rtf .rtfd .xls .oo3 .tables .taskpaper .textile .markdown .graffle .pages .vpdoc),
-  "Folders"     => [],
-  "Fonts"       => %w(.ttf .otf .suit),
-  "Links"       => %w(.webloc),
-  "Images"      => %w(.jpg .jpe .jpeg .png .gif .bmp .svg .psd .ai .ps .ico .icns .lineform .eps .acorn .pxm .ptn .fla .tiff),
-  "Models"      => %w(.3ds .blend .dxf .skp),
-  "Other"       => [],
-  "Scripts"     => %w(.script .celtx .scriv),
-  "Torrents"    => %w(.torrent),
-  "Videos"      => %w(.avi .mvk .mov .wmv .flv .mp4 .mpg .mpeg .m4v .qtz)
-} unless defined? EXTENSIONS_FOR_TYPE
-
-# The character to postfix any clashing filenames with...
-FILE_POSTFIX = "_" unless defined? FILE_POSTFIX
-
-# =========================================================================================
-# = No need to edit anything below this line                                              =
-# =========================================================================================
 
 require 'rubygems'
 require 'rake'
 
 class Organize < Thor
+
+  EXTENSIONS_FOR_TYPE = {
+    "Applications" => %w(.app .jar .exe .pkg .mpkg .air),
+    "Archives"    => %w(.dmg .zip .rar .sit .sitx .tar .gz .bz2),
+    "Audio"       => %w(.wav .mp3 .ogg .m3u .m4a .wma),
+    "Code"        => %w(.sh .rb .js .java .c .coffee .m .h .py .php .css .haml .sass .erb .html .rhtml .xhtml .htm  .bat .patch .diff .gem .xul .shy .sql .nib .xib .cib .j .sj .nu .rake .thor .nuke .mxml .less .scss),
+    "Comics"      => %w(.cbr .cbz),
+    "Data"        => %w(.xml .yaml .yml .json .sqlite .sqlite3 .db .csv .opml),
+    "Documents"   => %w(.pdf .doc .ppt .txt .text .rtf .rtfd .xls .oo3 .tables .taskpaper .textile .markdown .graffle .pages .vpdoc),
+    "Folders"     => [],
+    "Fonts"       => %w(.ttf .otf .suit),
+    "Links"       => %w(.webloc),
+    "Images"      => %w(.jpg .jpe .jpeg .png .gif .bmp .svg .psd .ai .ps .ico .icns .lineform .eps .acorn .pxm .ptn .fla .tiff),
+    "Models"      => %w(.3ds .blend .dxf .skp .obj),
+    "Other"       => [],
+    "Scripts"     => %w(.script .celtx .scriv),
+    "Torrents"    => %w(.torrent),
+    "Videos"      => %w(.avi .mvk .mov .wmv .flv .mp4 .mpg .mpeg .m4v .qtz)
+  } #unless defined? EXTENSIONS_FOR_TYPE
+
+  # The character to postfix any clashing filenames with...
+  FILE_POSTFIX = "_" #unless defined? FILE_POSTFIX
+  
   
   desc "files [FOLDER]", "Organize files in FOLDER based on file type"
   method_options :postfix => "_", :force => :boolean, :verbose => :boolean

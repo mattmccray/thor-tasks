@@ -19,8 +19,8 @@ class Vhost < Thor
       File.open '/etc/hosts', 'a' do |hosts|
         hosts << entry
       end rescue begin
-        puts "You don't have permission to update /etc/hosts"
-        puts "Re-run with sudo."
+        puts "You don't have permission to update /etc/hosts... Try using sudo:"
+        puts "  sudo -E thor vhost:new #{url} #{path}"
         puts "Done."
         exit 1
       end

@@ -8,7 +8,7 @@ class Yui < Thor
       require 'yui/compressor'
     rescue
       puts "Requires YUI Compressor gem:"
-      puts "  sudo gem install -r yui-compressor"
+      puts "  [sudo] gem install -r yui-compressor"
       exit 1
     end
     sources.each do |source|

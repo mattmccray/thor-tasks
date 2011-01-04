@@ -35,6 +35,11 @@ class Vhost < Thor
     ServerName #{url}
     ErrorLog /private/var/log/apache2/#{url}-error_log
     CustomLog /private/var/log/apache2/#{url}-access_log common
+    RackEnv development
+    <Directory #{fullpath}>
+        AllowOverride all
+        Options -MultiViews
+    </Directory>
 </VirtualHost>
       """
       File.open '/etc/apache2/extra/httpd-vhosts.conf', 'a' do |hosts|
